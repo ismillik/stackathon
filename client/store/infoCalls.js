@@ -15,12 +15,12 @@ const _getImdbResults = (results) => {
     };
 };
 
-// const_getStreamResults = (results) => {
-//     return {
-//         type: GET_STREAM_RESULTS,
-//         results
-//     };
-// };
+const _getStreamResults = (results) => {
+    return {
+        type: GET_STREAM_RESULTS,
+        results
+    };
+};
 
 //THUNKS
 
@@ -41,6 +41,19 @@ export const getImdbResults = (title, type, history) => {
     };
 };
 
+export const getStreamResults = (id) => {
+    console.log('IN getStreamResults')
+    return async (dispatch) => {
+        const response = await axios.get('/api/stream', {params: {id}});
+        let results = response.data;
+        console.log('These are the results!!!!!!!', results)
+        dispatch(_getStreamResults(results));
+        // history.push('/results');
+    };
+};
+
+
+
 //reducer
 
 export const imdbReducer = (state = [], action) => {
@@ -52,13 +65,13 @@ export const imdbReducer = (state = [], action) => {
     }
 }
 
-// export const streamReducer = (state = {}, action) => {
-//     switch (action.type) {
-//         case GET_STREAM_RESULTS:
-//             return action.results;
-//         default:
-//             return state;
-//     }
-// }
+export const streamReducer = (state = {}, action) => {
+    switch (action.type) {
+        case GET_STREAM_RESULTS:
+            return action.results;
+        default:
+            return state;
+    }
+}
 
 

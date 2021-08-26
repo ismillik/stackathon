@@ -3,11 +3,12 @@ import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
-import { imdbReducer } from './infoCalls'
+import { imdbReducer, streamReducer } from './infoCalls'
 
 const reducer = combineReducers({ 
   auth, 
-  imdb: imdbReducer 
+  imdb: imdbReducer,
+  stream: streamReducer 
 });
 
 const middleware = composeWithDevTools(

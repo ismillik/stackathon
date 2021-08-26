@@ -5,14 +5,15 @@ import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>confluence</h1>
+    <Link to= '/home'>
+      <h2>confluence</h2>
+    </Link>
     <nav>
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <Link to='/search'>Search</Link>
-          <Link to = '/list'>WatchList</Link>
+          <Link to='/home'>New Search</Link>
+          <Link to = '/watchlist'>WatchList</Link>
           <a href="#" onClick={handleClick}>
             Logout
           </a>
