@@ -28,12 +28,13 @@ class Results extends React.Component {
 
           <ul>
               {imdb.map((result) => {
+                
                 return (
                   <li key= {result.imdb_id}>
                     <Link to= {`/results/${result.imdb_id}`}>
                       <div>
                         <h4>{result.title}</h4>
-                        <p>Year: {result.year}</p>
+                        <p>Released: {result.year || result.release_date}</p>
                       </div>
                     </Link>
                     <p><a href={`https://www.imdb.com/title/${result.imdb_id}`} target= '_blank'>View on imdb.</a></p>
