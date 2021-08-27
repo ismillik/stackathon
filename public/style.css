@@ -7,6 +7,7 @@ body {
   font-size: 16px;
   margin: 0;
   padding: 0;
+  background-color: lightpink;
 }
 
 nav {
@@ -15,11 +16,18 @@ nav {
   justify-content: space-between;
   align-items: center;
   background-color: paleturquoise;
+  border-bottom: 1px solid darkblue;
 }
 
 nav a {
   display: inline-block;
   margin: 1em;
+  text-decoration: none;
+  color: darkblue;
+}
+
+nav a:hover {
+  color: white;
 }
 
 #site-title {
@@ -30,17 +38,17 @@ nav a {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: pink;
+
 }
 
 #content-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: white;
+  background-color: honeydew;
   margin: 1rem;
   padding: 1rem;
-  border: 1px solid darkblue;
+  /* border: 1px solid darkblue; */
   border-radius: 15px;
 
 }  
@@ -107,15 +115,80 @@ a {
   text-decoration: none;
 }
 
-label {
+/* label {
   display: block;
+} */
+
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* max-width: 50%;; */
+  min-height: 15rem;
+  background-color: white;
+  border: 1px solid darkblue;
+  border-radius: 15px;
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#about {
+  flex-grow: 2;
 }
 
 form div {
-  margin: 1em;
+  margin: 1rem;
   display: inline-block;
 }
 
+form > div > p {
+  margin-top: 0px;
+}
+
+#searchTitle {
+  width: fit-content;
+  margin: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+}
+
+#titleLabel {
+  display: block;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+
 li {
   list-style: none;
+}
+
+button {
+  border: 0;
+  border-radius: 10px;
+  background: 0;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: normal;
+  box-shadow: 0;
+  background-color: darkblue;
+  color: #fff;
+  padding: 1em 2em;
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0.5rem;
+}
+
+button:hover {
+  background-color: #fff;
+  color:darkblue;
+  box-shadow: 0 0 0 2px darkblue;
 }

@@ -7,13 +7,16 @@ class Results extends React.Component {
   constructor() {
     super();
   }
+  
+
+
 
   render() {
-    console.log('These are the props!!!!!!', this.props)
-    if (!this.props.imdb) {
+    // console.log('These are the props!!!!!!', this.props)
+    if (!this.props.imdb.length) {
       return (
-        <div id= 'content-wrapper'>
-          <h3>Please enter a new search!</h3>
+        <div id="content-wrapper">
+          <h4>Please enter a new search!</h4>
           <Link to = '/home'>
             <button>Back to Search</button>
           </Link>
@@ -51,7 +54,8 @@ class Results extends React.Component {
   };
 }
 
-const mapStateToProps = ({ imdb }) => {
+const mapStateToProps = (state) => {
+  const imdb = state.imdb || [];
   return {
     imdb
   }

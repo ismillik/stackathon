@@ -30,19 +30,31 @@ class Home extends React.Component {
     const { handleChange, handleSubmit } = this;
     
     return (
-      <div id="content-wrapper">
-        <div>
-          <form onSubmit={handleSubmit} >
+      
+      <div id='content-wrapper'>
+        <div id='content-block'>
+        <div id='about'>
+          <h3>conflux</h3>
+          <p><i>(noun)  a flowing together of two or more streams</i></p>
+          <p>Welcome! Simplify finding out where to stream your favorite shows and movies by merging your streams with conflux. Get started with the <i>Search by Title</i> field to search IMDb for your desired title. Then make your selection to find out where it can be streamed.</p>
+          <div>
+            <p><strong>Supported platforms</strong></p>
+          </div>
+        </div>
+        <div id='form'>
+          <form onSubmit={handleSubmit}>
             <div className="formfield">
               <input
+                id='searchTitle'
                 type="text"
                 name="searchTitle"
                 value={this.state.searchTitle}
                 onChange={handleChange}
               />
-              <label>Search by Title</label>
-              <br />
-              <p>Select a type:</p>
+              <label id='titleLabel'>Search by Title</label>
+             </div>
+             <div className="formfield">
+              <p><strong>Select</strong></p>
               <input 
                 type='radio'
                 id= 'movie'
@@ -61,9 +73,12 @@ class Home extends React.Component {
               />
               <label htmlFor='tvShow'>TV Show</label>
             </div>
-            <button type='submit'>Submit</button>
+            <div className="formfield">
+              <button type='submit'>Submit</button>
+            </div>
           </form>
         </div>
+      </div>
       </div>
 
     )
