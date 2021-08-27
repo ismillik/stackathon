@@ -4,11 +4,10 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <Link to= '/home'>
-      <h2>confluence</h2>
-    </Link>
     <nav>
+      <Link to= '/home'>
+        <h2 id= 'site-title'>confluence</h2>
+      </Link>
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
@@ -26,8 +25,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         </div>
       )}
     </nav>
-    <hr />
-  </div>
 )
 
 /**

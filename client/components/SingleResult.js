@@ -31,65 +31,81 @@ class SingleResult extends React.Component {
         const { stream } = this.props;
         const rating = stream.imdbRating/10;
         const cast = stream.cast.join(', ');
-        const director = stream.significants[0];
+        const significants = stream.significants.join(', ');
         const posterURL = stream.posterURLs[342];
         const streamingInfo = stream.streamingInfo;
         let streamingKeys = [];
         if (streamingInfo) {
             streamingKeys = Object.keys(streamingInfo);
         };
+        let seasons = 0;
+        if(stream.seasons) {
+            seasons = stream.seasons;
+        }
 
         return (
-            <div id='content-wrapper'>
-                <div id='title-block'>
-                    <h3>{stream.originalTitle}</h3>
-                    <div id='title-details'>
-                        <h5>
-                            <span>{stream.year}</span>
-                            <span>{stream.runtime} Minutes</span>
-                            <span>IMDb Rating: {rating}/10</span>
-                        </h5>
+            <div id='view'>
+                <div id='content-wrapper'>
+                    <div id='title-block'>
+                        <h1>{stream.originalTitle}</h1>
+                        <div id='title-details'>                          
+                            <p>{stream.year}</p>
+                            <p>{stream.runtime || stream.episodeRuntimes[0]} Minutes</p>
+                            <p><img src='/images/star.png'id='star'/>IMDb Rating <strong>{rating}</strong>/10</p>
+                        </div>
                     </div>
-                    
-                </div>
-                <div id='img-block'>
-                    <img src={posterURL}/>
-                    <p>{stream.tagline}</p>
-                </div>
-                <div id='text-block'>
-                    <p>Starring: {cast}</p>
-                    <p>Director/Producer {director}</p>
-                    
-                    <p>{stream.overview}</p>
-                </div>
-                <div id='streaming-block'>
-                    <h3>Streaming Availability</h3>
-                    {streamingKeys.length ? (
-                        <div>
-                            <h4>Watch Now</h4>
-                            <ul>
-                                {streamingKeys.map((service, idx) => {
-                                    return (
-                                    <li key= {idx}>
-                                        <div>
-                                            <a href= {streamingInfo[service].us.link} target= '_blank'>
-                                                <img src={`/images/${service}.jpeg`} className= 'streaming-logo'/>
-                                            </a>  
-                                        </div>
-                                    </li>
-                                    )
-                                })}
-                            </ul>
+                    <div id = 'content-block'>
+                        <div id='left'>
+                            <img src={posterURL}/>
+                            <p><i>{stream.tagline}</i></p>
                         </div>
-                    ) : (
-                        <div>
-                            <h4>Sorry! This title is not available on streaming services in your area. Try a new Search.</h4>
+                        <div id='right'>
+                            <p><strong>Starring</strong>   {cast}</p>
+                            <p><strong>Directed/Produced</strong>   {significants}</p>
+                            {seasons ? (
+                                <p><strong>Seasons</strong>   {seasons}</p>
+                            ):(
+                                <span></span>
+                            )}  
+                            <p>{stream.overview}</p>
+                            <a href={`https://www.imdb.com/title/${stream.imdbID}`} target= '_blank'>
+                                <p><img src='/images/imdb.png'id='imdb'/> View IMDb.</p>
+                            </a>
+                            
                         </div>
-                    )}
+                        <div id='streaming-block'>
+                            <h3>Availability</h3>
+                            {streamingKeys.length ? (
+                                <div id='stream-on'>
+                                    <h4>Stream Now On</h4>
+                                    <ul>
+                                        {streamingKeys.map((service, idx) => {
+                                            return (
+                                            <li key= {idx}>
+                                                <div>
+                                                    <a href= {streamingInfo[service].us.link} target= '_blank'>
+                                                        <img src={`/images/${service}.jpeg`} className= 'streaming-logo'/>
+                                                    </a>  
+                                                </div>
+                                            </li>
+                                            )
+                                        })}
+                                    </ul>
+                                </div>
+                            ) : (
+                                <div id='stream-on-sorry'>
+                                    <h5><i>Sorry! This title is not available on streaming services in your area. Try a new Search.</i></h5>
+                                    <Link to = '/home'>
+                                        <button>Back to Search</button>
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
+                    </div>                   
                 </div>
             </div>
   
-      )
+        )
     }
   }
   
