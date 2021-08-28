@@ -5,9 +5,9 @@ import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
     <nav>
-      <Link to= '/home'>
-        <h2 id= 'site-title'>conflux</h2>
-      </Link>
+
+        <h2 id='site-title'>conflux</h2>
+
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}

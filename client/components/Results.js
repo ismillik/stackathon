@@ -7,40 +7,38 @@ class Results extends React.Component {
   constructor() {
     super();
   }
-  
-
-
 
   render() {
-    // console.log('These are the props!!!!!!', this.props)
     if (!this.props.imdb.length) {
       return (
         <div id="content-wrapper">
-          <h4>Please enter a new search!</h4>
-          <Link to = '/home'>
-            <button>Back to Search</button>
-          </Link>
+          <div id='message'>
+            <h4>Hmm... that doesn't seem to be working.</h4>
+            <h4>Please try a new search!</h4>
+            <Link to = '/home'>
+              <button>Back to Search</button>
+            </Link>
+          </div>
         </div>
       )
     }
-    const { imdb } = this.props;
+    const { imdb } = this.props;  
     return (
       <div id="content-wrapper">
         <div id='imdbList'>
-          <h2>What are you looking for?</h2>
-
-          <ul>
+          <h3>What are you looking for?</h3>
+          <ul id='result-list'>
               {imdb.map((result) => {
-                
                 return (
-                  <li key= {result.imdb_id}>
+                  <li key= {result.imdb_id} className='result'>
                     <Link to= {`/results/${result.imdb_id}`}>
-                      <div>
-                        <h4>{result.title}</h4>
-                        <p>Released: {result.year || result.release_date}</p>
-                      </div>
+                        <p><strong>{result.title}</strong> ({result.year || result.release_date.slice(0,4)})</p>
                     </Link>
-                    <p><a href={`https://www.imdb.com/title/${result.imdb_id}`} target= '_blank'>View on imdb.</a></p>
+                    <div className='result-info'>
+                      <a href={`https://www.imdb.com/title/${result.imdb_id}`} target= '_blank'>
+                        <p><img src='/images/star.png'id='star-result'/> View IMDb.</p>
+                      </a> 
+                    </div>
                   </li>
                 )
               })}

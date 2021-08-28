@@ -30,14 +30,20 @@ export const getImdbResults = (title, type, history) => {
     return async (dispatch) => {
         const response = await axios.get('/api/imdb', {params: {title, type}});
         let results = response.data;
-        if (type === 'get-movies-by-title') {
-            results = results.movie_results;
+        console.log('These are the results!!!!!!!', results);
+        if (!results.search_results) {
+            dispatch(_getImdbResults([]));
+            history.push('/results');
         }
         else {
-            results = results.tv_results;
-        }
-        dispatch(_getImdbResults(results));
-        history.push('/results');
+            if (type === 'get-movies-by-title') {
+                dispatch(_getImdbResults(results.movie_results));
+            }
+            else if (type === 'get-shows-by-title') {
+                dispatch(_getImdbResults(results.tv_results));
+            }        
+            history.push('/results');
+        };   
     };
 };
 
@@ -45,10 +51,8 @@ export const getStreamResults = (id) => {
     console.log('IN getStreamResults')
     return async (dispatch) => {
         const response = await axios.get('/api/stream', {params: {id}});
-        let results = response.data;
-        console.log('These are the results!!!!!!!', results)
+        let results = response.data; 
         dispatch(_getStreamResults(results));
-        // history.push('/results');
     };
 };
 
