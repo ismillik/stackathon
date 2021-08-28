@@ -26,7 +26,7 @@ class Results extends React.Component {
     return (
       <div id="content-wrapper">
         <div id='imdbList'>
-          <h3>What are you looking for?</h3>
+          <h3 id='looking-for'>What are you looking for?</h3>
           <ul id='result-list'>
               {imdb.map((result) => {
                 return (

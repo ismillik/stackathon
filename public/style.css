@@ -264,3 +264,7 @@ li {
   margin: 0.25rem;
   border-radius: 10px;
 }
+
+#looking-for {
+  color: darkblue;
+}
