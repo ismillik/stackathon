@@ -36,7 +36,7 @@ class Home extends React.Component {
         <div id='about'>
           <h3>conflux</h3>
           <p><i>(noun)  a flowing together of two or more streams</i></p>
-          <p>Welcome! Simplify finding out where to stream your favorite shows and movies by merging your streams with conflux. Get started with the <i>Search by Title</i> field to search IMDb for your desired title. Then make your selection to find out where it can be streamed.</p>
+          <p>Welcome! Simplify finding out where to stream your favorite shows and movies by merging your streams with conflux. Get started with the <i>Search by Title</i> field to the right. View the results from IMDb, then make your selection to find out where it can be streamed.</p>
           <div id='supported platforms'>
             <p><strong>Supported platforms</strong></p>
             <div id='all-logos'>
