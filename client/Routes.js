@@ -5,6 +5,7 @@ import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import Results from './components/Results';
 import SingleResult from './components/SingleResult';
+import Watchlist from './components/Watchlist';
 import {me} from './store'
 
 class Routes extends Component {
@@ -22,6 +23,7 @@ class Routes extends Component {
             <Route path="/home" component={Home} />
             <Route exact path= '/results' component= {Results} />
             <Route path= '/results/:id' component= {SingleResult} />
+            <Route path= '/watchlist' component= {Watchlist} />
             <Redirect to="/home" />
           </Switch>
         ) : (
